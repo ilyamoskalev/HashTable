@@ -64,7 +64,7 @@ public class ChainHashTable implements HashTable {
     public Integer search(int key) {
         final int hash = (key % capacity);
         if (table[hash] == null)
-            return -1;
+            return null;
         else {
             Chain entry = table[hash];
             while (entry != null && entry.getKey() != key) {
@@ -101,7 +101,7 @@ public class ChainHashTable implements HashTable {
                         min = entry.getValue();
                     }
                     entry = entry.getNext();
-                } while (entry.getNext() != null);
+                } while (entry != null);
             }
         }
         return min;
@@ -120,7 +120,7 @@ public class ChainHashTable implements HashTable {
                         max = entry.getValue();
                     }
                     entry = entry.getNext();
-                } while (entry.getNext() != null);
+                } while (entry != null);
             }
         }
         return max;
