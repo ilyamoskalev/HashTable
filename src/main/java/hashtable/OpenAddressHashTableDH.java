@@ -2,6 +2,7 @@ package hashtable;
 
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("MissortedModifiers")
 public class OpenAddressHashTableDH {
     private static final int START_CAPACITY = 8;
     private static final double REHASH = 0.75;
@@ -56,7 +57,7 @@ public class OpenAddressHashTableDH {
         for (int i = 0; i < capacity; ++i) {
             if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
                 int hash = (table[i].getKey() % newCapacity);
-                final int stepSize = 6 - table[i].getKey() % 6;
+                final int stepSize = 7 - table[i].getKey() % 7;
                 while (newTable[hash] != null) {
                     hash += stepSize;
                     hash %= capacity;
@@ -87,7 +88,43 @@ public class OpenAddressHashTableDH {
     }
 
     public int hashFunc2(int key) {
-        return 6 - key % 6;
+        return 7 - key % 7;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Nullable
+    public Integer min() {
+        if (isEmpty()) {
+            return null;
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < capacity; ++i) {
+            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
+                if (table[i].getValue() < min) {
+                    min = table[i].getValue();
+                }
+            }
+        }
+        return min;
+    }
+
+    @Nullable
+    public Integer max() {
+        if (isEmpty()) {
+            return null;
+        }
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < capacity; ++i) {
+            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
+                if (table[i].getValue() > max) {
+                    max = table[i].getValue();
+                }
+            }
+        }
+        return max;
     }
 
     public void print() {

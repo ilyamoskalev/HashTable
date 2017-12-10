@@ -2,6 +2,7 @@ package hashtable;
 
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("MissortedModifiers")
 public class OpenAddressHashTableLP {
     private static final int START_CAPACITY = 8;
     private static final double REHASH = 0.75;
@@ -72,6 +73,42 @@ public class OpenAddressHashTableLP {
             }
             hash = (hash + 1) % capacity;
         }
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Nullable
+    public Integer min() {
+        if (isEmpty()) {
+            return null;
+        }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < capacity; ++i) {
+            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
+                if (table[i].getValue() < min) {
+                    min = table[i].getValue();
+                }
+            }
+        }
+        return min;
+    }
+
+    @Nullable
+    public Integer max() {
+        if (isEmpty()) {
+            return null;
+        }
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < capacity; ++i) {
+            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
+                if (table[i].getValue() > max) {
+                    max = table[i].getValue();
+                }
+            }
+        }
+        return max;
     }
 
     public void print() {

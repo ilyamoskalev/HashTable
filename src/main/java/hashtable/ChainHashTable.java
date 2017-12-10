@@ -1,13 +1,15 @@
 package hashtable;
 
 public class ChainHashTable implements HashTable {
-    private static final int START_CAPACITY = 8;
+    private static final int START_CAPACITY = 16;
     private Chain[] table;
     private int capacity;
+    private int size;
 
     public ChainHashTable() {
         capacity = START_CAPACITY;
         table = new Chain[capacity];
+        size = 0;
         for (int i = 0; i < capacity; ++i) {
             table[i] = null;
         }
@@ -16,6 +18,7 @@ public class ChainHashTable implements HashTable {
     public ChainHashTable(int capacity) {
         table = new Chain[this.capacity];
         this.capacity = capacity;
+        size = 0;
         for (int i = 0; i < this.capacity; i++) {
             table[i] = null;
         }
