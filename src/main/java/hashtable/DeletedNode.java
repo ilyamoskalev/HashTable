@@ -3,7 +3,7 @@ package hashtable;
 /**
  * Created by ilamoskalev on 10.12.2017.
  */
-public final class DeletedNode extends HashTableNode{
+public final class DeletedNode extends HashTableNode {
     private static DeletedNode node = null;
 
     private DeletedNode() {

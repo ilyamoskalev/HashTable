@@ -126,7 +126,7 @@ public class ChainHashTable implements HashTable {
         return max;
     }
 
-    public void print() {
+    public String print() {
         final StringBuilder description = new StringBuilder("Hash table: [ ");
         for (int i = 0; i < capacity; i++) {
             description.append("{  ");
@@ -140,22 +140,7 @@ public class ChainHashTable implements HashTable {
             description.append("} ");
         }
         description.append(']');
-        System.out.println(description.toString());
+        return description.toString();
     }
 
-
-    public static void main(String[] args) {
-        final ChainHashTable table = new ChainHashTable();
-        table.add(1, 11);
-        table.add(2, 22);
-        table.add(0, 33);
-        table.add(17, 44);
-        table.add(1, 88);
-        table.add(9, 99);
-        System.out.println(table.search(9));
-        table.print();
-        table.add(5, 5);
-        table.add(6, 6);
-        table.print();
-    }
 }
