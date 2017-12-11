@@ -16,7 +16,7 @@ public class ChainHashTable implements HashTable {
     }
 
     public ChainHashTable(int capacity) {
-        table = new Chain[this.capacity];
+        table = new Chain[capacity];
         this.capacity = capacity;
         size = 0;
         for (int i = 0; i < this.capacity; i++) {

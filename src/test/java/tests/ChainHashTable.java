@@ -63,7 +63,7 @@ public class ChainHashTable {
 
     @Test
     public void speedTestAdd() {
-        final hashtable.ChainHashTable table = new hashtable.ChainHashTable();
+        final hashtable.ChainHashTable table = new hashtable.ChainHashTable(64);
         final Random random = new Random();
         final Clock clock = Clock.systemDefaultZone();
         long before = clock.millis();
