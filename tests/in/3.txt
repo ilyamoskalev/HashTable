@@ -1,0 +1,38 @@
+add 433 56
+add 100 456
+add 133 77
+add 120 44
+add 334 87
+add 65 54
+add 55 66
+add 424 92
+add 184 66
+add 363 91
+add 5475 66
+add 94 57
+add 466 88
+add 9994 234
+add 234 58
+add 49 22
+add 50 84
+add 58 33
+print
+delete 433
+delete 100
+delete 133
+delete 120
+delete 334
+delete 65
+delete 55
+delete 424
+delete 184
+delete 363
+delete 5475
+delete 94
+delete 466
+delete 9994
+delete 234
+delete 49
+delete 50
+delete 58
+print

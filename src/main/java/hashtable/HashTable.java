@@ -15,4 +15,6 @@ public interface HashTable {
 
     @Nullable
     Integer max();
+
+    String print();
 }

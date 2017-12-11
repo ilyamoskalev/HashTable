@@ -1,0 +1,36 @@
+add 433 56
+add 100 456
+add 133 77
+add 120 44
+add 334 87
+add 65 54
+add 55 66
+add 424 92
+add 184 66
+add 363 91
+add 5475 66
+add 94 57
+add 466 88
+add 9994 234
+add 234 58
+add 49 22
+add 50 84
+add 58 33
+search 433
+search 100
+search 133
+search 120
+search 334
+search 65
+search 55
+search 424
+search 184
+search 363
+search 5475
+search 94
+search 466
+search 9994
+search 234
+search 49
+search 50
+search 58

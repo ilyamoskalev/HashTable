@@ -1,9 +1,7 @@
 package hashtable;
 
-import org.jetbrains.annotations.Nullable;
-
 @SuppressWarnings("MissortedModifiers")
-public class OpenAddressHashTableLP {
+public class OpenAddressHashTableLP implements HashTable {
     private static final int START_CAPACITY = 8;
     private static final double REHASH = 0.75;
     private int size;
@@ -18,7 +16,7 @@ public class OpenAddressHashTableLP {
             table[i] = null;
     }
 
-    @Nullable
+    @Override
     public Integer search(int key) {
         int hash = (key * 37) % capacity;
         while (table[hash] != null) {
@@ -30,6 +28,7 @@ public class OpenAddressHashTableLP {
         return null;
     }
 
+    @Override
     public void add(int key, int value) {
         if (REHASH <= (size * 1.0 / capacity)) {
             rehash();
@@ -62,6 +61,7 @@ public class OpenAddressHashTableLP {
         table = newTable;
     }
 
+    @Override
     public void delete(int key) {
         int hash = (key * 37) % capacity;
         while (table[hash] != null) {
@@ -78,7 +78,7 @@ public class OpenAddressHashTableLP {
         return size == 0;
     }
 
-    @Nullable
+    @Override
     public Integer min() {
         if (isEmpty()) {
             return null;
@@ -94,7 +94,7 @@ public class OpenAddressHashTableLP {
         return min;
     }
 
-    @Nullable
+    @Override
     public Integer max() {
         if (isEmpty()) {
             return null;
@@ -110,6 +110,7 @@ public class OpenAddressHashTableLP {
         return max;
     }
 
+    @Override
     public String print() {
         final StringBuilder description = new StringBuilder("Hash table: [ ");
         for (int i = 0; i < capacity; i++) {
@@ -124,6 +125,5 @@ public class OpenAddressHashTableLP {
         description.append(']');
         return description.toString();
     }
-
 }
 

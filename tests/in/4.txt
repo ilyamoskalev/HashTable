@@ -1,0 +1,65 @@
+add 433 56
+add 100 456
+add 133 77
+add 120 44
+add 334 87
+add 65 54
+add 55 66
+add 424 92
+add 184 66
+add 363 91
+add 5475 66
+add 94 57
+add 466 88
+add 9994 234
+add 234 58
+add 49 22
+add 50 84
+add 58 33
+search 1
+search 2
+search 3
+search 4
+search 5
+search 6
+search 7
+search 8
+search 9
+search 10
+search 11
+search 12
+search 13
+search 14
+search 15
+search 16
+search 17
+search 18
+search 19
+search 20
+search 21
+search 22
+search 23
+search 24
+search 25
+search 26
+search 27
+search 28
+search 29
+search 30
+search 31
+search 32
+search 33
+search 34
+search 35
+search 36
+search 37
+search 38
+search 39
+search 40
+search 41
+search 42
+search 43
+search 44
+search 45
+search 46
+search 47

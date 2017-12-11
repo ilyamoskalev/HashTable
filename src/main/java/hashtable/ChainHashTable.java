@@ -1,5 +1,7 @@
 package hashtable;
 
+import org.jetbrains.annotations.Nullable;
+
 public class ChainHashTable implements HashTable {
     private static final int START_CAPACITY = 16;
     private Chain[] table;
@@ -24,6 +26,7 @@ public class ChainHashTable implements HashTable {
         }
     }
 
+    @Override
     public void add(int key, int value) {
         final int hash = (key % capacity);
         if (table[hash] == null) {
@@ -41,7 +44,7 @@ public class ChainHashTable implements HashTable {
         }
     }
 
-
+    @Override
     public void delete(int key) {
         final int hash = (key % capacity);
         if (table[hash] != null) {
@@ -61,6 +64,7 @@ public class ChainHashTable implements HashTable {
         }
     }
 
+    @Override
     public Integer search(int key) {
         final int hash = (key % capacity);
         if (table[hash] == null)
@@ -71,7 +75,7 @@ public class ChainHashTable implements HashTable {
                 entry = entry.getNext();
             }
             if (entry == null) {
-                return -1;
+                return null;
             } else {
                 return entry.getValue();
             }
@@ -88,6 +92,7 @@ public class ChainHashTable implements HashTable {
         return true;
     }
 
+    @Override
     public Integer min() {
         if (isEmpty()) {
             return null;
@@ -107,6 +112,7 @@ public class ChainHashTable implements HashTable {
         return min;
     }
 
+    @Override
     public Integer max() {
         if (isEmpty()) {
             return null;
@@ -126,6 +132,7 @@ public class ChainHashTable implements HashTable {
         return max;
     }
 
+    @Override
     public String print() {
         final StringBuilder description = new StringBuilder("Hash table: [ ");
         for (int i = 0; i < capacity; i++) {

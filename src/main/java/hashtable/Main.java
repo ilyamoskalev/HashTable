@@ -22,7 +22,7 @@ public class Main {
             final List<String> outputData2 = new ArrayList<>();
             final List<String> outputData3 = new ArrayList<>();
             for (String line : inputData) {
-                if (line.equals("print") || line.equals("min") || line.equals("max")) {
+                if (line.indexOf(' ') == -1) {
                     line += " ";
                 }
                 System.out.println(line);
@@ -106,6 +106,8 @@ public class Main {
                         outputData1.add(chainTable.print());
                         outputData2.add(lpTable.print());
                         outputData3.add(dhTable.print());
+                        break;
+                    default:
                         break;
                 }
             }

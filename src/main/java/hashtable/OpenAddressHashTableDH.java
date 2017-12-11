@@ -1,9 +1,7 @@
 package hashtable;
 
-import org.jetbrains.annotations.Nullable;
-
 @SuppressWarnings("MissortedModifiers")
-public class OpenAddressHashTableDH {
+public class OpenAddressHashTableDH implements HashTable {
     private static final int START_CAPACITY = 8;
     private static final double REHASH = 0.75;
     private int size;
@@ -18,7 +16,7 @@ public class OpenAddressHashTableDH {
             table[i] = null;
     }
 
-    @Nullable
+    @Override
     public Integer search(int key) {
         int hash = hashFunc1(key, capacity);
         final int stepSize = hashFunc2(key, capacity);
@@ -32,6 +30,7 @@ public class OpenAddressHashTableDH {
         return null;
     }
 
+    @Override
     public void add(int key, int value) {
         if (REHASH <= (size * 1.0 / capacity)) {
             rehash();
@@ -68,6 +67,7 @@ public class OpenAddressHashTableDH {
         table = newTable;
     }
 
+    @Override
     public void delete(int key) {
         int hash = hashFunc1(key, capacity);
         final int stepSize = hashFunc2(key, capacity);
@@ -98,7 +98,7 @@ public class OpenAddressHashTableDH {
         return size == 0;
     }
 
-    @Nullable
+    @Override
     public Integer min() {
         if (isEmpty()) {
             return null;
@@ -114,7 +114,7 @@ public class OpenAddressHashTableDH {
         return min;
     }
 
-    @Nullable
+    @Override
     public Integer max() {
         if (isEmpty()) {
             return null;
@@ -130,6 +130,7 @@ public class OpenAddressHashTableDH {
         return max;
     }
 
+    @Override
     public String print() {
         final StringBuilder description = new StringBuilder("Hash table: [ ");
         for (int i = 0; i < capacity; i++) {
