@@ -29,39 +29,57 @@ public class Main {
                 Integer value;
                 switch (line.substring(0, line.indexOf(' '))) {
                     case "add":
-                        value = Integer.parseInt(line.substring(line.lastIndexOf(' ') + 1));
-                        int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1, line.lastIndexOf(' ')));
-                        chainTable.add(key, value);
-                        lpTable.add(key, value);
-                        dhTable.add(key, value);
-                        break;
+                        try {
+                            value = Integer.parseInt(line.substring(line.lastIndexOf(' ') + 1));
+                            final int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1, line.lastIndexOf(' ')));
+                            chainTable.add(key, value);
+                            lpTable.add(key, value);
+                            dhTable.add(key, value);
+                            break;
+                        } catch (NumberFormatException e) {
+                            break;
+                        } catch (StringIndexOutOfBoundsException e){
+                            break;
+                        }
                     case "delete":
-                        key = Integer.parseInt(line.substring(line.indexOf(' ') + 1));
-                        chainTable.delete(key);
-                        lpTable.delete(key);
-                        dhTable.delete(key);
-                        break;
+                        try {
+                            final int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1));
+                            chainTable.delete(key);
+                            lpTable.delete(key);
+                            dhTable.delete(key);
+                            break;
+                        } catch (NumberFormatException e) {
+                            break;
+                        } catch (StringIndexOutOfBoundsException e){
+                            break;
+                        }
                     case "search":
-                        key = Integer.parseInt(line.substring(line.indexOf(' ') + 1));
-                        value = chainTable.search(key);
-                        if (value == null) {
-                            outputData1.add("error");
-                        } else {
-                            outputData1.add(value.toString());
+                        try {
+                            final int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1));
+                            value = chainTable.search(key);
+                            if (value == null) {
+                                outputData1.add("error");
+                            } else {
+                                outputData1.add(value.toString());
+                            }
+                            value = lpTable.search(key);
+                            if (value == null) {
+                                outputData2.add("error");
+                            } else {
+                                outputData2.add(value.toString());
+                            }
+                            value = dhTable.search(key);
+                            if (value == null) {
+                                outputData3.add("error");
+                            } else {
+                                outputData3.add(value.toString());
+                            }
+                            break;
+                        } catch (NumberFormatException e) {
+                            break;
+                        } catch (StringIndexOutOfBoundsException e){
+                            break;
                         }
-                        value = lpTable.search(key);
-                        if (value == null) {
-                            outputData2.add("error");
-                        } else {
-                            outputData2.add(value.toString());
-                        }
-                        value = dhTable.search(key);
-                        if (value == null) {
-                            outputData3.add("error");
-                        } else {
-                            outputData3.add(value.toString());
-                        }
-                        break;
                     case "min":
                         value = chainTable.min();
                         if (value == null) {
@@ -120,5 +138,4 @@ public class Main {
             e.printStackTrace();
         }
     }
-
 }
