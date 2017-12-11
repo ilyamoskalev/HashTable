@@ -106,7 +106,7 @@
 
 Среднее время работы
 
-![formula](https://latex.codecogs.com/png.latex?\dpi{100}&space;\large&space;Tcp(M,&space;N)&space;=&space;M(T(k))&space;=&space;\sum_{i&space;=&space;0}^{M&space;-1}\frac{1}{M}*(1&space;&plus;&space;Ni)&space;=&space;\frac{1}{M}\sum_{i&space;=&space;0}^{M&space;-&space;1}(1&space;&plus;&space;Ni)&space;=&space;\frac{M&space;&plus;&space;N}{M}&space;=&space;1&space;&plus;&space;\alpha)
+![formula](https://latex.codecogs.com/png.latex?\dpi{100}&space;\large&space;Tcp(M,&space;N)&space;=&space;M(T(k))&space;=&space;\sum_{i&space;=&space;0}^{M&space;-1}\frac{1}{M}(1&space;&plus;&space;Ni)&space;=&space;\frac{1}{M}\sum_{i&space;=&space;0}^{M&space;-&space;1}(1&space;&plus;&space;Ni)&space;=&space;\frac{M&space;&plus;&space;N}{M}&space;=&space;1&space;&plus;&space;\alpha)
 <a name="moa"></a>
 # Метод открытой адресации
 
@@ -244,7 +244,8 @@ __ - пустая ячейка, D - удаленная ячейка.
 
 5.Проверка корректной работы search(поиск элементов по сушествуюшему ключу)
 
-#Сравнение времени работы
+# Сравнение времени работы
+
 Время работы рачитываем тестом с 1000000 операций каждого типа.
 
 Метод цепочек:
