@@ -106,7 +106,7 @@
 
 Среднее время работы
 
-![formula](https://latex.codecogs.com/png.latex?\dpi{100}&space;\large&space;Tcp(M,&space;N)&space;=&space;M(T(k))&space;=&space;\sum_{i&space;=&space;0}^{M&space;-1}\frac{1}{M}(1&space;&plus;&space;Ni)&space;=&space;\frac{1}{M}\sum_{i&space;=&space;0}^{M&space;-&space;1}(1&space;&plus;&space;Ni)&space;=&space;\frac{M&space;&plus;&space;N}{M}&space;=&space;1&space;&plus;&space;\alpha)
+![formula](https://latex.codecogs.com/png.latex?\dpi{100}&space;\large&space;Tcp(M,&space;N)&space;=&space;M(T(k))&space;=&space;\sum_{i&space;=&space;0}^{M&space;-1}\frac{1}{M}*(1&space;&plus;&space;Ni)&space;=&space;\frac{1}{M}\sum_{i&space;=&space;0}^{M&space;-&space;1}(1&space;&plus;&space;Ni)&space;=&space;\frac{M&space;&plus;&space;N}{M}&space;=&space;1&space;&plus;&space;\alpha)
 <a name="moa"></a>
 # Метод открытой адресации
 
@@ -166,6 +166,10 @@
 | Поиск | `O(1)` | `O(1 + a)` | `O(1 / 1 - a)` | `O(n)`
 | Вставка | `O(1)` | `O(1 + a)` | `O(1 / 1 - a)` | `O(n)`
 | Удаление | `O(1)` | `O(1 + a)` | `O(1 / 1 - a)` | `O(n)`
+
+# Использование хеш-таблиц
+
+Хеширование полезно, когда широкий диапазон возможных значений должен быть сохранен в малом объеме памяти, и нужен способ быстрого, практически произвольного доступа. Хэш-таблицы часто применяются в базах данных, и, особенно, в языковых процессорах типа компиляторов и ассемблеров, где они изящно обслуживают таблицы идентификаторов. В таких приложениях, таблица - наилучшая структура данных.
 
 <a name="fvd"></a>
 #  Формат входных данных
