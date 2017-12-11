@@ -87,7 +87,11 @@ public class OpenAddressHashTableDH {
     }
 
     public int hashFunc2(int key) {
-        return 7 - (key % 7);
+        int hash = ((key * 97) % (capacity - 1)) ;
+        if(hash % 2 == 0){
+            ++hash;
+        }
+        return hash;
     }
 
     public boolean isEmpty() {

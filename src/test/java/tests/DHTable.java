@@ -31,5 +31,6 @@ public class DHTable {
         }
         after = clock.millis();
         System.out.println("Delete time: "+String.valueOf(after - before));
+        System.out.println(table.print());
     }
 }
