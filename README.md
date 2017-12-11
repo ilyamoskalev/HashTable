@@ -233,31 +233,31 @@ __ - пустая ячейка, D - удаленная ячейка.
 Тесты находятся в *./tests/*
 
 #Сравнение времени работы
-Время работы рачитываем тестом с 100000 операций каждого типа.
+Время работы рачитываем тестом с 1000000 операций каждого типа.
 
 Метод цепочек:
 
-Add time: 56
+Add time: 545
+ 
+Search time: 354
 
-Search time: 26
-
-Delete time: 10
+Delete time: 255
 
 Линейное пробирование:
 
-Add time: 40
+Add time: 562
 
-Search time: 13
+Search time: 281
 
-Delete time: 46
+Delete time: 365
 
 Двойное хэштрование:
 
-Add time: 28
+Add time: 582
 
-Search time: 47
+Search time: 273
 
-Delete time: 64
+Delete time: 377
 
 <a name="pvdz"></a>
 #  План выполнения домашнего задания

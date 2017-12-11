@@ -20,8 +20,8 @@ public class OpenAddressHashTableDH {
 
     @Nullable
     public Integer search(int key) {
-        int hash = hashFunc1(key);
-        final int stepSize = hashFunc2(key);
+        int hash = hashFunc1(key, capacity);
+        final int stepSize = hashFunc2(key, capacity);
         while (table[hash] != null) {
             if (table[hash].getKey() == key) {
                 return table[hash].getValue();
@@ -36,8 +36,8 @@ public class OpenAddressHashTableDH {
         if (REHASH <= (size * 1.0 / capacity)) {
             rehash();
         }
-        int hash = hashFunc1(key);
-        final int stepSize = hashFunc2(key);
+        int hash = hashFunc1(key, capacity);
+        final int stepSize = hashFunc2(key, capacity);
         while (table[hash] != null && table[hash] != DeletedNode.getUniqueDeletedNode()) {
             if (table[hash].getKey() == key) {
                 table[hash].setValue(value);
@@ -55,11 +55,11 @@ public class OpenAddressHashTableDH {
         final HashTableNode[] newTable = new HashTableNode[newCapacity];
         for (int i = 0; i < capacity; ++i) {
             if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                int hash = (table[i].getKey() % newCapacity);
-                final int stepSize = 7 - table[i].getKey() % 7;
+                int hash = hashFunc1(table[i].getKey(), newCapacity);
+                final int stepSize = hashFunc2(table[i].getKey(), newCapacity);
                 while (newTable[hash] != null) {
                     hash += stepSize;
-                    hash %= capacity;
+                    hash %= newCapacity;
                 }
                 newTable[hash] = new HashTableNode(table[i].getKey(), table[i].getValue());
             }
@@ -69,8 +69,8 @@ public class OpenAddressHashTableDH {
     }
 
     public void delete(int key) {
-        int hash = hashFunc1(key);
-        final int stepSize = hashFunc2(key);
+        int hash = hashFunc1(key, capacity);
+        final int stepSize = hashFunc2(key, capacity);
         while (table[hash] != null) {
             if (table[hash].getKey() == key) {
                 table[hash] = DeletedNode.getUniqueDeletedNode();
@@ -82,13 +82,13 @@ public class OpenAddressHashTableDH {
         }
     }
 
-    public int hashFunc1(int key) {
-        return (key * 47) % capacity;
+    public int hashFunc1(int key, int currentCapacity) {
+        return key % currentCapacity;
     }
 
-    public int hashFunc2(int key) {
-        int hash = ((key * 97) % (capacity - 1)) ;
-        if(hash % 2 == 0){
+    public int hashFunc2(int key, int currentCapacity) {
+        int hash = (key * 47) % (currentCapacity - 1);
+        if (hash % 2 == 0) {
             ++hash;
         }
         return hash;
