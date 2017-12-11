@@ -106,7 +106,7 @@
 
 Среднее время работы
 
-$$Tcp(M, N) = M(T(k)) = \sum_{i = 0}^{M -1}\frac{1}{M}*(1 + Ni) = \frac{1}{M}\sum_{i = 0}^{M - 1}(1 + Ni) = \frac{M + N}{M} = 1 + \alpha$$
+![formula](https://latex.codecogs.com/png.latex?\dpi{100}&space;\large&space;Tcp(M,&space;N)&space;=&space;M(T(k))&space;=&space;\sum_{i&space;=&space;0}^{M&space;-1}\frac{1}{M}*(1&space;&plus;&space;Ni)&space;=&space;\frac{1}{M}\sum_{i&space;=&space;0}^{M&space;-&space;1}(1&space;&plus;&space;Ni)&space;=&space;\frac{M&space;&plus;&space;N}{M}&space;=&space;1&space;&plus;&space;\alpha)
 <a name="moa"></a>
 # Метод открытой адресации
 
