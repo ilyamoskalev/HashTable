@@ -32,7 +32,6 @@ public class OpenAddressHashTableLP {
 
     public void add(int key, int value) {
         if (REHASH <= (size * 1.0 / capacity)) {
-            System.out.println("rehash");
             rehash();
         }
         int hash = (key * 37) % capacity;

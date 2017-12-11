@@ -70,13 +70,17 @@ public class ChainHashTable {
         for (int i = 0; i < 100000; ++i) {
             table.add(random.nextInt(1000), random.nextInt(1000));
         }
-        final long after = clock.millis();
-        System.out.println(after - before);
+        long after = clock.millis();
+        System.out.println("Add time: "+String.valueOf(after - before));
         for (int i = 0; i < 100000; ++i) {
             table.search(random.nextInt(1000));
         }
         before = clock.millis();
-        System.out.println(before - after);
-        System.out.println(table.print());
+        System.out.println("Search time: "+String.valueOf(before - after));
+        for (int i = 0; i < 100000; ++i) {
+            table.delete(random.nextInt(1000));
+        }
+        after = clock.millis();
+        System.out.println("Delete time: "+String.valueOf(after - before));
     }
 }

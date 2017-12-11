@@ -25,11 +25,11 @@ public class Main {
                 if (line.equals("print") || line.equals("min") || line.equals("max")) {
                     line += " ";
                 }
+                System.out.println(line);
                 Integer value;
                 switch (line.substring(0, line.indexOf(' '))) {
                     case "add":
                         value = Integer.parseInt(line.substring(line.lastIndexOf(' ') + 1));
-                        System.out.println(line);
                         int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1, line.lastIndexOf(' ')));
                         chainTable.add(key, value);
                         lpTable.add(key, value);

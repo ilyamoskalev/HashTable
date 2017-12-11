@@ -1,0 +1,16 @@
+add 433 56
+add 10 456
+add 33 77
+min
+max
+delete 10
+max
+search 10
+search 99
+add 10 44
+search 10
+add 34 87
+add 65 54
+search 34
+min
+max

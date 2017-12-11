@@ -1,0 +1,67 @@
+add 433 56
+add 100 456
+add 133 77
+add 120 44
+add 334 87
+add 65 54
+add 55 66
+add 424 92
+add 184 66
+add 363 91
+add 5475 66
+add 94 57
+add 466 88
+add 9994 234
+add 234 58
+add 49 22
+add 50 84
+add 58 33
+print
+delete 1
+Delete 2
+Delete 3
+Delete 4
+Delete 5
+Delete 6
+Delete 7
+Delete 8
+Delete 9
+Delete 10
+Delete 11
+Delete 12
+Delete 13
+Delete 14
+Delete 15
+Delete 16
+Delete 17
+Delete 18
+Delete 19
+Delete 20
+Delete 21
+Delete 22
+Delete 23
+Delete 24
+Delete 25
+Delete 26
+Delete 27
+Delete 28
+Delete 29
+Delete 30
+Delete 31
+Delete 32
+Delete 33
+Delete 34
+Delete 35
+Delete 36
+Delete 37
+Delete 38
+Delete 39
+Delete 40
+Delete 41
+Delete 42
+Delete 43
+Delete 44
+Delete 45
+Delete 46
+Delete 47
+print

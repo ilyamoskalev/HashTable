@@ -34,7 +34,6 @@ public class OpenAddressHashTableDH {
 
     public void add(int key, int value) {
         if (REHASH <= (size * 1.0 / capacity)) {
-            System.out.println("rehash");
             rehash();
         }
         int hash = hashFunc1(key);
@@ -78,8 +77,8 @@ public class OpenAddressHashTableDH {
                 --size;
                 return;
             }
-            hash += stepSize; // add the step
-            hash %= capacity; // for wraparound
+            hash += stepSize;
+            hash %= capacity;
         }
     }
 
@@ -88,7 +87,7 @@ public class OpenAddressHashTableDH {
     }
 
     public int hashFunc2(int key) {
-        return 7 - key % 7;
+        return 7 - (key % 7);
     }
 
     public boolean isEmpty() {
