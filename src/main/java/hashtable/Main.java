@@ -29,7 +29,8 @@ public class Main {
                 switch (line.substring(0, line.indexOf(' '))) {
                     case "add":
                         value = Integer.parseInt(line.substring(line.lastIndexOf(' ') + 1));
-                        int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1, line.lastIndexOf(' ') - 1));
+                        System.out.println(line);
+                        int key = Integer.parseInt(line.substring(line.indexOf(' ') + 1, line.lastIndexOf(' ')));
                         chainTable.add(key, value);
                         lpTable.add(key, value);
                         dhTable.add(key, value);
@@ -72,7 +73,7 @@ public class Main {
                         if (value == null) {
                             outputData2.add("empty");
                         } else {
-                            outputData3.add(value.toString());
+                            outputData2.add(value.toString());
                         }
                         value = dhTable.min();
                         if (value == null) {
@@ -92,7 +93,7 @@ public class Main {
                         if (value == null) {
                             outputData2.add("empty");
                         } else {
-                            outputData3.add(value.toString());
+                            outputData2.add(value.toString());
                         }
                         value = dhTable.max();
                         if (value == null) {

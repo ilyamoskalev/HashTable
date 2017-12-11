@@ -1,2 +1,41 @@
 add 10 20
+add 433 56
+min
+max
+add 10 456
+add 33 77
+min
+max
+add 34 87
+add 65 54
+min
+max
+add 43 47
+add 32 35
+min
+max
+add 98 57
+add 4 567
+min
+max
+add 6 88
+add 67 35
+min
+max
+add 23 55
+add 123 93
+min
+max
+add 67 189
+add 98 91
+min
+max
+add 76 68
+add 12 1703
+min
+max
+add 1 13
+add 56 21
+min
+max
 print
