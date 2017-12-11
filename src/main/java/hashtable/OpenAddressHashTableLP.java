@@ -10,7 +10,7 @@ public class OpenAddressHashTableLP {
     private int capacity;
     HashTableNode[] table;
 
-    OpenAddressHashTableLP() {
+    public OpenAddressHashTableLP() {
         capacity = START_CAPACITY;
         table = new HashTableNode[capacity];
         size = 0;
@@ -20,7 +20,7 @@ public class OpenAddressHashTableLP {
 
     @Nullable
     public Integer search(int key) {
-        int hash = (key % capacity);
+        int hash = (key * 37) % capacity;
         while (table[hash] != null) {
             if (table[hash].getKey() == key) {
                 return table[hash].getValue();
@@ -35,7 +35,7 @@ public class OpenAddressHashTableLP {
             System.out.println("rehash");
             rehash();
         }
-        int hash = (key % capacity);
+        int hash = (key * 37) % capacity;
         while (table[hash] != null && table[hash] != DeletedNode.getUniqueDeletedNode()) {
             if (table[hash].getKey() == key) {
                 table[hash].setValue(value);
@@ -52,7 +52,7 @@ public class OpenAddressHashTableLP {
         final HashTableNode[] newTable = new HashTableNode[newCapacity];
         for (int i = 0; i < capacity; ++i) {
             if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                int hash = (table[i].getKey() % newCapacity);
+                int hash = (table[i].getKey() * 37) % newCapacity;
                 while (newTable[hash] != null) {
                     hash = (hash + 1) % newCapacity;
                 }
@@ -64,7 +64,7 @@ public class OpenAddressHashTableLP {
     }
 
     public void delete(int key) {
-        int hash = (key % capacity);
+        int hash = (key * 37) % capacity;
         while (table[hash] != null) {
             if (table[hash].getKey() == key) {
                 table[hash] = DeletedNode.getUniqueDeletedNode();

@@ -3,6 +3,9 @@ package tests;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.Clock;
+import java.util.Random;
+
 public class ChainHashTable {
     @Test
     public void testSimpleAddAndSearch() {
@@ -56,5 +59,24 @@ public class ChainHashTable {
         table.add(16, 77);
         table.add(71, 633);
         Assert.assertEquals(table.print(), "Hash table: [ {  77  } {  } {  } {  245  8  } {  -12345  -123  } {  888  } {  777  } {  333  633  } {  } {  } {  666  } {  } {  } {  } {  } {  } ]");
+    }
+
+    @Test
+    public void speedTestAdd() {
+        final hashtable.ChainHashTable table = new hashtable.ChainHashTable();
+        final Random random = new Random();
+        final Clock clock = Clock.systemDefaultZone();
+        long before = clock.millis();
+        for (int i = 0; i < 100000; ++i) {
+            table.add(random.nextInt(1000), random.nextInt(1000));
+        }
+        final long after = clock.millis();
+        System.out.println(after - before);
+        for (int i = 0; i < 100000; ++i) {
+            table.search(random.nextInt(1000));
+        }
+        before = clock.millis();
+        System.out.println(before - after);
+        System.out.println(table.print());
     }
 }

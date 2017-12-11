@@ -22,10 +22,10 @@ public class Main {
             final List<String> outputData2 = new ArrayList<>();
             final List<String> outputData3 = new ArrayList<>();
             for (String line : inputData) {
-                Integer value;
-                if(line.equals("print") || line.equals("min") || line.equals("max")){
+                if (line.equals("print") || line.equals("min") || line.equals("max")) {
                     line += " ";
                 }
+                Integer value;
                 switch (line.substring(0, line.indexOf(' '))) {
                     case "add":
                         value = Integer.parseInt(line.substring(line.lastIndexOf(' ') + 1));

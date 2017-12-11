@@ -10,7 +10,7 @@ public class OpenAddressHashTableDH {
     private int capacity;
     HashTableNode[] table;
 
-    OpenAddressHashTableDH() {
+    public OpenAddressHashTableDH() {
         capacity = START_CAPACITY;
         table = new HashTableNode[capacity];
         size = 0;
@@ -84,7 +84,7 @@ public class OpenAddressHashTableDH {
     }
 
     public int hashFunc1(int key) {
-        return key % capacity;
+        return (key * 47) % capacity;
     }
 
     public int hashFunc2(int key) {
