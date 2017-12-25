@@ -1,5 +1,6 @@
 package tests;
 
+import hashtable.OpenAddressHashTableDH;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -44,6 +45,17 @@ public class ChainHashTable {
     }
 
     @Test
+    public void testMinAndMaxEmpty() {
+        final hashtable.ChainHashTable table = new hashtable.ChainHashTable();
+        Assert.assertNull(table.max());
+        Assert.assertNull(table.min());
+        table.add(Integer.MAX_VALUE, 100);
+        Assert.assertNotNull(table.min());
+        Assert.assertNotNull(table.max());
+        Assert.assertEquals(table.max(), table.min());
+    }
+
+    @Test
     public void testPrint() {
         final hashtable.ChainHashTable table = new hashtable.ChainHashTable();
         table.add(10, 666);
@@ -61,7 +73,7 @@ public class ChainHashTable {
 
     @Test
     public void speedTestAdd() {
-        final hashtable.ChainHashTable table = new hashtable.ChainHashTable(1024*512);
+        final hashtable.ChainHashTable table = new hashtable.ChainHashTable(1024 * 512);
         final Random random = new Random();
         final Clock clock = Clock.systemDefaultZone();
         long before = clock.millis();
@@ -69,16 +81,16 @@ public class ChainHashTable {
             table.add(random.nextInt(1000000), random.nextInt(1000));
         }
         long after = clock.millis();
-        System.out.println("Add time: "+String.valueOf(after - before));
+        System.out.println("Add time: " + String.valueOf(after - before));
         for (int i = 0; i < 1000000; ++i) {
             table.search(random.nextInt(1000000));
         }
         before = clock.millis();
-        System.out.println("Search time: "+String.valueOf(before - after));
+        System.out.println("Search time: " + String.valueOf(before - after));
         for (int i = 0; i < 1000000; ++i) {
             table.delete(random.nextInt(1000000));
         }
         after = clock.millis();
-        System.out.println("Delete time: "+String.valueOf(after - before));
+        System.out.println("Delete time: " + String.valueOf(after - before));
     }
 }

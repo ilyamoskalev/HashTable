@@ -49,6 +49,17 @@ public class DHTable {
     }
 
     @Test
+    public void testMinAndMaxEmpty() {
+        final OpenAddressHashTableDH table = new OpenAddressHashTableDH();
+        Assert.assertNull(table.max());
+        Assert.assertNull(table.min());
+        table.add(Integer.MAX_VALUE, 100);
+        Assert.assertNotNull(table.min());
+        Assert.assertNotNull(table.max());
+        Assert.assertEquals(table.max(), table.min());
+    }
+
+    @Test
     public void testPrint() {
         final OpenAddressHashTableDH table = new OpenAddressHashTableDH();
         table.add(10, 666);
@@ -65,7 +76,7 @@ public class DHTable {
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         final OpenAddressHashTableDH table = new OpenAddressHashTableDH();
         table.add(10, 666);
         table.add(20, -12345);
@@ -100,16 +111,16 @@ public class DHTable {
             table.add(random.nextInt(1000000), random.nextInt(1000));
         }
         long after = clock.millis();
-        System.out.println("Add time: "+String.valueOf(after - before));
+        System.out.println("Add time: " + String.valueOf(after - before));
         for (int i = 0; i < 1000000; ++i) {
             table.search(random.nextInt(1000000));
         }
         before = clock.millis();
-        System.out.println("Search time: "+String.valueOf(before - after));
+        System.out.println("Search time: " + String.valueOf(before - after));
         for (int i = 0; i < 1000000; ++i) {
             table.delete(random.nextInt(1000000));
         }
         after = clock.millis();
-        System.out.println("Delete time: "+String.valueOf(after - before));
+        System.out.println("Delete time: " + String.valueOf(after - before));
     }
 }
