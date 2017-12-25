@@ -37,17 +37,15 @@ public class LPTable {
     @Test
     public void testMinAndMax() {
         final OpenAddressHashTableLP table = new OpenAddressHashTableLP();
-        final int max = 12345;
-        table.add(10, max);
-        final int min = -12345;
+        table.add(10, 998);
         table.add(20, -12345);
         table.add(3, 245);
         table.add(4, -123);
         table.add(5, 888);
         table.add(6, 777);
         table.add(7, 333);
-        Assert.assertTrue(table.max() == max);
-        Assert.assertTrue(table.min() == min);
+        Assert.assertTrue(table.max() == -12345);
+        Assert.assertTrue(table.min() == 245);
     }
 
     @Test

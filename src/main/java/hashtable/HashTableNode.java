@@ -24,4 +24,18 @@ public class HashTableNode {
     public void setKey(int key) {
         this.key = key;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+
+        final HashTableNode other = (HashTableNode) object;
+
+        return key == other.key && value == other.value;
+    }
 }

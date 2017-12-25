@@ -4,6 +4,7 @@ package hashtable;
 public class OpenAddressHashTableLP implements HashTable {
     private static final int START_CAPACITY = 8;
     private static final double REHASH = 0.75;
+    private static final int HASH_PARAM = 37;
     private int size;
     private int capacity;
     HashTableNode[] table;
@@ -18,7 +19,7 @@ public class OpenAddressHashTableLP implements HashTable {
 
     @Override
     public Integer search(int key) {
-        int hash = (key * 37) % capacity;
+        int hash = (key * HASH_PARAM) % capacity;
         while (table[hash] != null) {
             if (table[hash].getKey() == key) {
                 return table[hash].getValue();
@@ -33,8 +34,8 @@ public class OpenAddressHashTableLP implements HashTable {
         if (REHASH <= (size * 1.0 / capacity)) {
             rehash();
         }
-        int hash = (key * 37) % capacity;
-        while (table[hash] != null && table[hash] != DeletedNode.getUniqueDeletedNode()) {
+        int hash = (key * HASH_PARAM) % capacity;
+        while (table[hash] != null && !table[hash].equals(DeletedNode.getUniqueDeletedNode())) {
             if (table[hash].getKey() == key) {
                 table[hash].setValue(value);
                 return;
@@ -49,8 +50,8 @@ public class OpenAddressHashTableLP implements HashTable {
         final int newCapacity = capacity * 2;
         final HashTableNode[] newTable = new HashTableNode[newCapacity];
         for (int i = 0; i < capacity; ++i) {
-            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                int hash = (table[i].getKey() * 37) % newCapacity;
+            if (table[i] != null && !table[i].equals(DeletedNode.getUniqueDeletedNode())) {
+                int hash = (table[i].getKey() * HASH_PARAM) % newCapacity;
                 while (newTable[hash] != null) {
                     hash = (hash + 1) % newCapacity;
                 }
@@ -63,7 +64,7 @@ public class OpenAddressHashTableLP implements HashTable {
 
     @Override
     public void delete(int key) {
-        int hash = (key * 37) % capacity;
+        int hash = (key * HASH_PARAM) % capacity;
         while (table[hash] != null) {
             if (table[hash].getKey() == key) {
                 table[hash] = DeletedNode.getUniqueDeletedNode();
@@ -84,14 +85,16 @@ public class OpenAddressHashTableLP implements HashTable {
             return null;
         }
         int min = Integer.MAX_VALUE;
+        int result = 0;
         for (int i = 0; i < capacity; ++i) {
-            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                if (table[i].getValue() < min) {
-                    min = table[i].getValue();
+            if (table[i] != null && !table[i].equals(DeletedNode.getUniqueDeletedNode())) {
+                if (table[i].getKey() <= min) {
+                    min = table[i].getKey();
+                    result = table[i].getValue();
                 }
             }
         }
-        return min;
+        return result;
     }
 
     @Override
@@ -100,14 +103,16 @@ public class OpenAddressHashTableLP implements HashTable {
             return null;
         }
         int max = Integer.MIN_VALUE;
+        int result = 0;
         for (int i = 0; i < capacity; ++i) {
-            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                if (table[i].getValue() > max) {
-                    max = table[i].getValue();
+            if (table[i] != null && !table[i].equals(DeletedNode.getUniqueDeletedNode())) {
+                if (table[i].getKey() >= max) {
+                    max = table[i].getKey();
+                    result = table[i].getValue();
                 }
             }
         }
-        return max;
+        return result;
     }
 
     @Override
@@ -116,7 +121,7 @@ public class OpenAddressHashTableLP implements HashTable {
         for (int i = 0; i < capacity; i++) {
             if (table[i] == null) {
                 description.append("__  ");
-            } else if (table[i] == DeletedNode.getUniqueDeletedNode()) {
+            } else if (table[i].equals(DeletedNode.getUniqueDeletedNode())) {
                 description.append("D ");
             } else {
                 description.append(String.format("%d  ", table[i].getValue()));

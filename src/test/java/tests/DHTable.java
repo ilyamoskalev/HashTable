@@ -37,17 +37,15 @@ public class DHTable {
     @Test
     public void testMinAndMax() {
         final OpenAddressHashTableDH table = new OpenAddressHashTableDH();
-        final int max = 12345;
-        table.add(10, max);
-        final int min = -12345;
+        table.add(10, 88789);
         table.add(20, -12345);
         table.add(3, 245);
         table.add(4, -123);
         table.add(5, 888);
         table.add(6, 777);
         table.add(7, 333);
-        Assert.assertTrue(table.max() == max);
-        Assert.assertTrue(table.min() == min);
+        Assert.assertTrue(table.max() == -12345);
+        Assert.assertTrue(table.min() == 245);
     }
 
     @Test
@@ -63,7 +61,7 @@ public class DHTable {
         table.add(19, 8);
         table.add(16, 77);
         table.add(71, 633);
-        Assert.assertEquals(table.print(), "Hash table: [ 77  __  __  245  -12345  888  777  -123  __  333  666  __  633  8  __  __  ]");
+        Assert.assertEquals(table.print(), "Hash table: [ 77  __  __  245  -123  888  777  333  __  __  666  __  8  __  633  -12345  ]");
     }
 
     @Test

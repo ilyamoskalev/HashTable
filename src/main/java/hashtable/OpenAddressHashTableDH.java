@@ -4,6 +4,7 @@ package hashtable;
 public class OpenAddressHashTableDH implements HashTable {
     private static final int START_CAPACITY = 8;
     private static final double REHASH = 0.75;
+    private static final int HASH_PARAM = 47;
     private int size;
     private int capacity;
     HashTableNode[] table;
@@ -37,7 +38,7 @@ public class OpenAddressHashTableDH implements HashTable {
         }
         int hash = hashFunc1(key, capacity);
         final int stepSize = hashFunc2(key, capacity);
-        while (table[hash] != null && table[hash] != DeletedNode.getUniqueDeletedNode()) {
+        while (table[hash] != null && !table[hash].equals(DeletedNode.getUniqueDeletedNode())) {
             if (table[hash].getKey() == key) {
                 table[hash].setValue(value);
                 return;
@@ -53,7 +54,7 @@ public class OpenAddressHashTableDH implements HashTable {
         final int newCapacity = capacity * 2;
         final HashTableNode[] newTable = new HashTableNode[newCapacity];
         for (int i = 0; i < capacity; ++i) {
-            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
+            if (table[i] != null && !table[i].equals(DeletedNode.getUniqueDeletedNode())) {
                 int hash = hashFunc1(table[i].getKey(), newCapacity);
                 final int stepSize = hashFunc2(table[i].getKey(), newCapacity);
                 while (newTable[hash] != null) {
@@ -87,7 +88,7 @@ public class OpenAddressHashTableDH implements HashTable {
     }
 
     public int hashFunc2(int key, int currentCapacity) {
-        int hash = (key * 47) % (currentCapacity - 1);
+        int hash = (key * HASH_PARAM) % (currentCapacity - 1);
         if (hash % 2 == 0) {
             ++hash;
         }
@@ -104,14 +105,16 @@ public class OpenAddressHashTableDH implements HashTable {
             return null;
         }
         int min = Integer.MAX_VALUE;
+        int result = 0;
         for (int i = 0; i < capacity; ++i) {
-            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                if (table[i].getValue() < min) {
-                    min = table[i].getValue();
+            if (table[i] != null && !table[i].equals(DeletedNode.getUniqueDeletedNode())) {
+                if (table[i].getKey() <= min) {
+                    min = table[i].getKey();
+                    result = table[i].getValue();
                 }
             }
         }
-        return min;
+        return result;
     }
 
     @Override
@@ -120,14 +123,16 @@ public class OpenAddressHashTableDH implements HashTable {
             return null;
         }
         int max = Integer.MIN_VALUE;
+        int result = 0;
         for (int i = 0; i < capacity; ++i) {
-            if (table[i] != null && table[i] != DeletedNode.getUniqueDeletedNode()) {
-                if (table[i].getValue() > max) {
-                    max = table[i].getValue();
+            if (table[i] != null && !table[i].equals(DeletedNode.getUniqueDeletedNode())) {
+                if (table[i].getKey() >= max) {
+                    max = table[i].getKey();
+                    result = table[i].getValue();
                 }
             }
         }
-        return max;
+        return result;
     }
 
     @Override
@@ -136,7 +141,7 @@ public class OpenAddressHashTableDH implements HashTable {
         for (int i = 0; i < capacity; i++) {
             if (table[i] == null) {
                 description.append("__  ");
-            } else if (table[i] == DeletedNode.getUniqueDeletedNode()) {
+            } else if (table[i].equals(DeletedNode.getUniqueDeletedNode())) {
                 description.append("D ");
             } else {
                 description.append(String.format("%d  ", table[i].getValue()));

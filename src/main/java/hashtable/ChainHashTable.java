@@ -1,17 +1,13 @@
 package hashtable;
 
-import org.jetbrains.annotations.Nullable;
-
 public class ChainHashTable implements HashTable {
     private static final int START_CAPACITY = 16;
     private Chain[] table;
     private int capacity;
-    private int size;
 
     public ChainHashTable() {
         capacity = START_CAPACITY;
         table = new Chain[capacity];
-        size = 0;
         for (int i = 0; i < capacity; ++i) {
             table[i] = null;
         }
@@ -20,7 +16,6 @@ public class ChainHashTable implements HashTable {
     public ChainHashTable(int capacity) {
         table = new Chain[capacity];
         this.capacity = capacity;
-        size = 0;
         for (int i = 0; i < this.capacity; i++) {
             table[i] = null;
         }
@@ -98,18 +93,20 @@ public class ChainHashTable implements HashTable {
             return null;
         }
         int min = Integer.MAX_VALUE;
+        int result = 0;
         for (int i = 0; i < capacity; ++i) {
             Chain entry = table[i];
             if (entry != null) {
                 do {
-                    if (entry.getValue() < min) {
-                        min = entry.getValue();
+                    if (entry.getKey() <= min) {
+                        min = entry.getKey();
+                        result = entry.getValue();
                     }
                     entry = entry.getNext();
                 } while (entry != null);
             }
         }
-        return min;
+        return result;
     }
 
     @Override
@@ -118,18 +115,20 @@ public class ChainHashTable implements HashTable {
             return null;
         }
         int max = Integer.MIN_VALUE;
+        int result = 0;
         for (int i = 0; i < capacity; ++i) {
             Chain entry = table[i];
             if (entry != null) {
                 do {
-                    if (entry.getValue() > max) {
-                        max = entry.getValue();
+                    if (entry.getKey() >= max) {
+                        max = entry.getKey();
+                        result = entry.getValue();
                     }
                     entry = entry.getNext();
                 } while (entry != null);
             }
         }
-        return max;
+        return result;
     }
 
     @Override
